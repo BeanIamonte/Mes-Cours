@@ -63,45 +63,38 @@ console.log(zorg.blesser(patate)); */
 class Personnage {
 
     constructor(name, life, experience) {
-
         this.name = name;
         this.life = life;
         this.experience = experience;
-
     }
-
 
     attaque(ennemi) {
 
         var vie = ennemi.life - this.experience;
-
-
-        
-
+        /**
+         * je ne sais pas ce que tu as voulu faire ici ? 
+         */
         var ennemiLife = ennemi.life -= this.experience;
 
+        /***
+         * pas utile. L'exprience peut s'acquerir par le vainqueur une fois le combat remporte 
+         */
         this.experience += 15;  // L'attaquant gagne 15 pts d'experience quand il se fait attaquer
-
-
         ennemi.experience += 10; // L'enemi gagne 10 pts d'experience quand il se fait attaquer
 
+        /**
+         * attention, la consigne etait qu'au moment ou l'un des deux tue l'autre il prend de l'experience. 
+         * Donc tu dois indiquer 1) que l'ennemi est mort 2) que le vainqueur prende de l'experience 
+         */
         if (ennemiLife <= 0) {
-
             return ennemi.name + " est mort ! Il a sucombé à l'attaque de " + this.name + " . ";
-
         } else { 
-
-        return this.name + " a blesse " + ennemi.name + " ! Il ne lui rest plus que " + vie + " points de vies ! Il a désormait " + ennemi.experience + " xp ! Et " + this.name + " a désormais " + this.experience + " xp !";
-
-
+            return this.name + " a blesse " + ennemi.name + " ! Il ne lui rest plus que " + vie + " points de vies ! Il a désormait " + ennemi.experience + " xp ! Et " + this.name + " a désormais " + this.experience + " xp !";
         }
     }
-
-
 }
 
 let zorg = new Personnage("zorg", 250, 50);
-
 let MonsieurPatate = new Personnage("MonsieurPatate", 300, 45);
 
 /*  METHODE UNE
@@ -134,10 +127,10 @@ console.log(zorg.attaque(MonsieurPatate));
 
 while (zorg.life > 0 || MonsieurPatate.life > 0) {
 
-
     console.log(zorg.attaque(MonsieurPatate));
-
     console.log(MonsieurPatate.attaque(zorg));
-
-
 }
+
+/**
+ * Super ! Bravo pour ta solution ! C'est top ! 
+ */
